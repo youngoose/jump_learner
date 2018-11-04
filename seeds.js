@@ -32,8 +32,8 @@ function seedDB(){
             //             //create a comment
             //             Comment.create(
             //                 {
-            //                     text: "This place is great, but I wish there was internet",
-            //                     author: "Homer"
+            //                     text: "I'm looking forward to attend this event !!",
+            //                     author: "SpiderMan"
             //                 }, function(err, comment){
             //                     if(err){
             //                         console.log(err);

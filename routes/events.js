@@ -55,6 +55,37 @@ router.get("/:id", function(req, res){
     });
 });
 
+//edit event route
+router.get("/:id/edit",  function(req, res){
+    console.log("IN EDIT!");
+    //find the event with provided ID
+    Event.findById(req.params.id, function(err, foundEvent){
+        if(err){
+            console.log(err);
+        } else {
+            //render show template with that event
+            res.render("events/edit", {event: foundEvent});
+        }
+    });
+});
+
+
+//update event route
+router.put("/:id", function(req, res){
+    var newData = {name: req.body.name, image: req.body.image, description: req.body.desc};
+    Event.findByIdAndUpdate(req.params.id, {$set: newData}, function(err, event){
+        if(err){
+          //  req.flash("error", err.message);
+            res.redirect("back");
+        } else {
+           // req.flash("success","Successfully Updated!");
+            res.redirect("/events/" + event._id);
+        }
+    });
+});
+
+
+
 //middleware
 function isLoggedIn(req, res, next){
     if(req.isAuthenticated()){

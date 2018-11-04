@@ -19,6 +19,9 @@
                     <p>
                         <em>Submitted By <%= event.author.username %></em>
                     </p>
+                    <% if(currentUser && event.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-warning" href="/events/<%= event._id %>/edit">Edit</a>
+                    <% } %>
                 </div>
             </div>
             <div class="well">
